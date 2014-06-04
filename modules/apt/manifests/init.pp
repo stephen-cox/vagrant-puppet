@@ -1,11 +1,13 @@
 class apt (
   $schedule_update = false,
-  $sleep           = 10
+  $sleep           = 10,
+  $distro          = 'trusty'
 ) {
 
   file { '/etc/apt/sources.list':
-      source => 'puppet:///modules/apt/sources.list',
-      notify => Exec['apt-get update'],
+      #source => 'puppet:///modules/apt/sources.list',
+      content => template('apt/sources.list.erb'),
+      notify  => Exec['apt-get update'],
   }
 
   exec { 'apt-get update':

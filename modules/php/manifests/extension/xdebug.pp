@@ -1,5 +1,4 @@
 class php::extension::xdebug (
-  $extension        = '/usr/lib/php5/20090626/xdebug.so',
   $default_enable   = 1,
   $idekey           = '',
   $remote_enable    = 1,
@@ -12,7 +11,7 @@ class php::extension::xdebug (
 
   exec { "install_xdebug":
     command => "pecl install xdebug",
-    creates => $extension,
+    unless  => "pecl info xdebug",
     require => Class['php'],
   }
 

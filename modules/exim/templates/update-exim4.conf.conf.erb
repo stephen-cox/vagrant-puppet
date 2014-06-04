@@ -19,7 +19,7 @@
 # This is a Debian specific file
 
 dc_eximconfig_configtype='satellite'
-dc_other_hostnames='localhost:localhost.localdomain:<%= fqdn %>:<%= hostname %>'
+dc_other_hostnames='localhost:localhost.localdomain:<%= @fqdn %>:<%= @hostname %>'
 dc_local_interfaces='127.0.0.1 ; ::1'
 dc_readhost='orient.ox.ac.uk'
 dc_relay_domains=''

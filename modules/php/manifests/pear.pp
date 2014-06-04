@@ -7,9 +7,9 @@ define php::pear (
   include php
 
   if $version != 'latest' {
-    $pear_source = "$$repository/{package}-${version}"
+    $pear_source = "${repository}/${package}-${version}"
   } else {
-    $pear_source = "$repository/${package}"
+    $pear_source = "${repository}/${package}"
   }
 
   if ! defined(Exec["add_repos_${repository}"]) { 

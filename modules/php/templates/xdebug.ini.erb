@@ -1,12 +1,12 @@
 ; File Managed by Puppet
-zend_extension=<%= extension %>
-xdebug.default_enable=<%= default_enable %>
-xdebug.idekey="<%= idekey %>"
-xdebug.remote_enable=<%= remote_enable %>
-xdebug.remote_autostart=<%= remote_autostart %>
-xdebug.remote_host=<%= remote_host %>
-xdebug.remote_port=<%= remote_port %>
-xdebug.remote_handler=<%= remote_handler %>
+zend_extension=<%= @extension %>
+xdebug.default_enable=<%= @default_enable %>
+xdebug.idekey="<%= @idekey %>"
+xdebug.remote_enable=<%= @remote_enable %>
+xdebug.remote_autostart=<%= @remote_autostart %>
+xdebug.remote_host=<%= @remote_host %>
+xdebug.remote_port=<%= @remote_port %>
+xdebug.remote_handler=<%= @remote_handler %>
 xdebug.remote_log="/var/log/xdebug/xdebug.log"
-xdebug.profiler_enable=<%= profiler_enable %>
+xdebug.profiler_enable=<%= @profiler_enable %>
 xdebug.profiler_output_dir="/var/log/xdebug/"

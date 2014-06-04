@@ -11,7 +11,7 @@ define php::pecl {
 
   file { "/etc/php5/conf.d/${name}.ini":
     content => "extension = ${name}.so",
-    ensure  => 'present',
+    ensure  => present,
     require => Exec["install_${name}"],
     notify => Service['apache2'];
   }
