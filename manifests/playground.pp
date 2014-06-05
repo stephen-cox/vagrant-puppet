@@ -14,7 +14,8 @@ node default {
 
   # Install Apache
   class { 'apache':
-    stage => 'main',
+    stage    => 'main',
+    sendfile => 'Off',
   }
 
   # Link /var/www to /vagrant

@@ -4,12 +4,14 @@ import "roles"
 
 node default {
 
+  $docroot = '/var/www/web'
+
   include lamp_server
     
   # Configure Apache
   apache::vhost { 'localhost':
     port              => '80',
-    docroot           => '/var/www/web',
+    docroot           => $docroot,
     docroot_owner     => 'vagrant',
     docroot_group     => 'vagrant',
     serveradmin       => 'webmaster@example.com',
@@ -19,7 +21,7 @@ node default {
     access_log_file   => 'access.log',
     access_log_format => 'combined',
     directories       => [
-      { path           => '/var/www/web',
+      { path           => $docroot,
         allow_override => 'All',
         rewrites       => [
           { rewrite_base => '/',
@@ -40,10 +42,10 @@ node default {
     grant    => 'ALL',
   }
 
-  # Configure Drupal
-#  class { 'drupal':
-#    drupal_root => '/var/www/web',
-#  }
+  # Configure Drupal 8
+  class { 'drupal8':
+    drupal_root => $docroot,
+  }
 
   # Install Xdebug
 #  class { 'php::extension::xdebug':

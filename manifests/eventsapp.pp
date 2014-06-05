@@ -29,7 +29,7 @@ node default {
           }
         ]
       }
-    ];
+    ],
   }
   
   # Configure MySQL
@@ -38,17 +38,17 @@ node default {
     password => 'Njk2YjczMWU0OTAw',
     host     => 'localhost',
     grant    => 'ALL',
-    sql      => '/vagrant/eventsapp.sql';
+    sql      => '/vagrant/eventsapp.sql',
   }
 
-  # Configure Drupal
-  class { 'drupal': 
-    drupal_root => '/var/www/drupal';
+  # Configure Drupal 7
+  class { 'drupal7':
+    drupal_root => '/var/www/drupal',
   }
 
   # Install Xdebug
   class { 'php::extension::xdebug':
     idekey      => 'PHPSTORM',
-    remote_host => '192.168.0.57';
+    remote_host => '192.168.0.57',
   }
 }
