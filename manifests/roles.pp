@@ -115,6 +115,9 @@ class drupal8 (
   $drupal_uri  = 'localhost'
 ) {
 
+  # Required packages
+  php::extension { [ 'curl', 'gd', 'mcrypt' ]: }
+
   # Install Composer
   exec { 'composer_install':
     command => 'curl -sS https://getcomposer.org/installer | php && sudo mv composer.phar /usr/local/bin/composer',
@@ -124,7 +127,7 @@ class drupal8 (
   # Install Drush from GitHub
   class { 'drush::git::drush':
     git_branch => 'master',
-    update     => true,
+    update     => false,
     require    => Exec['composer_install'],
     notify     => Exec['composer_drush_install'],
   }
