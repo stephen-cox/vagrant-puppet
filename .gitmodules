@@ -10,6 +10,6 @@
 [submodule "modules/stdlib"]
 	path = modules/stdlib
 	url = https://github.com/puppetlabs/puppetlabs-stdlib.git
-[submodule "modules/drush"]
-	path = modules/drush
-	url = git://git.drupal.org/project/puppet-drush.git
+[submodule "modules/vcsrepo"]
+	path = modules/vcsrepo
+	url = https://github.com/puppetlabs/puppetlabs-vcsrepo.git

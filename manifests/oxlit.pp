@@ -1,4 +1,4 @@
-# eventsapp Puppet config
+# oxlit Puppet config
 
 import "roles"
 
@@ -12,7 +12,7 @@ node default {
     docroot           => '/var/www/drupal',
     docroot_owner     => 'vagrant',
     docroot_group     => 'vagrant',
-    serveradmin       => 'webmaster@src-dev.com',
+    serveradmin       => 'webmaster@oxlit.co.uk',
     options           => [ '-Indexes', 'FollowSymLinks' ],
     error_log_file    => 'error.log',
     log_level         => 'warn',
@@ -33,15 +33,14 @@ node default {
   }
   
   # Configure MySQL
-  mysql::db { 'eventsapp':
-    user     => 'eventsapp',
-    password => 'Njk2YjczMWU0OTAw',
+  mysql::db { 'oxlit':
+    user     => 'oxlit',
+    password => 'DJ292JKDWsadl12',
     host     => 'localhost',
     grant    => 'ALL',
-    sql      => '/vagrant/eventsapp.sql',
   }
 
-  # Configure Drupal
+  # Configure Drupal 7
   class { 'drupal':
     drupal_root => '/var/www/drupal',
   }

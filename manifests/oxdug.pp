@@ -43,7 +43,8 @@ node default {
   }
 
   # Configure Drupal 8
-  class { 'drupal8':
+  class { 'drupal':
+    version     => 8,
     drupal_root => $docroot,
   }
 

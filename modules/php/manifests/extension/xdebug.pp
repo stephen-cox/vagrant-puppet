@@ -9,16 +9,29 @@ class php::extension::xdebug (
   $profiler_enable  = 1
 ) {
 
-  exec { "install_xdebug":
-    command => "pecl install xdebug",
+  if ! defined(Package['php5-dev']) {
+    package{ 'php5-dev':
+      ensure => 'present',
+    }
+  }
+
+  if $lsbdistcodename == 'trusty' {
+    $php_conf_dir = '/etc/php5/apache2/conf.d'
+  }
+  else {
+    $php_conf_dir = '/etc/php5/conf.d'
+  }
+
+  exec { 'install_xdebug':
+    command => "pecl install -Z xdebug",
     unless  => "pecl info xdebug",
     require => Class['php'],
   }
 
-  file { '/etc/php5/conf.d/xdebug.ini':
+  file { "${php_conf_dir}/xdebug.ini":
     content => template('php/xdebug.ini.erb'),
     ensure  => present,
-    require => Package['php5'],
+    require => [ Package['php5'], Exec['install_xdebug'] ],
     notify  => Service['apache2'],
   }
 

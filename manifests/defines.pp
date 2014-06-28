@@ -23,10 +23,11 @@ define no_service ( ) {
 
 # Install a package
 define install ( ) {
-  package {
-    "${name}":
-      ensure => present;
-   }
+  if ! defined(Package["${name}"]) {
+    package { "${name}":
+        ensure => present;
+     }
+  }
 }
 
 # Remove a package
