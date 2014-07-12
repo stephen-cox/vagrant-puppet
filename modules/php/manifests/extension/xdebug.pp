@@ -40,7 +40,7 @@ class php::extension::xdebug (
     owner   => "www-data",
     group   => "adm",
     mode    => 755,
-    require => File['/etc/php5/conf.d/xdebug.ini'],
+    require => File["${php_conf_dir}/xdebug.ini"],
   }
 
 }

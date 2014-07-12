@@ -6,11 +6,8 @@ class drupal (
 
   if $version == 7 {
 
-
   }
   elsif $version == 8 {
-
-
 
   }
   else {

@@ -17,7 +17,7 @@ class drupal::drush (
     source   => $git_repo,
     revision => $git_branch,
     user     => 'root',
-    require  => Class['PHP::composer'],
+    require  => Class['php::composer'],
     notify   => Exec['composer_drush_install'],
   }
 
