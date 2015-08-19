@@ -1,7 +1,5 @@
 class drupal (
-  $version = 7,
-  $drupal_root = '/var/www',
-  $drupal_uri  = 'localhost'
+  $version = 7
 ) {
 
   if $version == 7 {
@@ -20,14 +18,5 @@ class drupal (
 
   # Install Drush
   class { 'drupal::drush': }
-
-  # Drupal Cron job
-  cron { 'drupal-cron':
-    command => "drush cron --root=${drupal_root} --uri=${drupal_uri} --quiet",
-    ensure  => present,
-    user    => 'www-data',
-    minute  => 0,
-    require => Class['drupal::drush'],
-  }
 
 }

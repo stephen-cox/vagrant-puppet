@@ -1,4 +1,5 @@
 class php::extension::xdebug (
+  $extension        = '/usr/lib/php5/20121212/xdebug.so',
   $default_enable   = 1,
   $idekey           = '',
   $remote_enable    = 1,
